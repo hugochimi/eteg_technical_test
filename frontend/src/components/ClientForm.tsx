@@ -73,7 +73,7 @@ useEffect(() => {
       <h2>Lista de Clientes</h2>
       <ul>
         {clients.map((client: any) => (
-          <li key={client.id}>{client.nome_completo} - {client.email}</li>
+          <li key={client.id}>{client.nome_completo} - {client.email} - {client.cor_preferida} - {client.observacoes}</li>
         ))}
       </ul>
     </div>
