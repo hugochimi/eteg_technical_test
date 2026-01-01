@@ -23,7 +23,9 @@ Aplicação para cadastro de clientes com React, Node.js e Postgres.
 ## Como executar
 1. Clone o repo.
 2. Execute `docker-compose up --build`.
-3. Acesse o frontend em http://localhost:3000 e a API em http://localhost:5000.
+3. Acesse o frontend em http://localhost:3000 
+4. Acesso a API em http://localhost:5000
+5. Acesso ao Banco de dados através do pgAdmin http://localhost:5050/
 
 ## Requisitos Atendidos
 - Formulário único para cadastro.
