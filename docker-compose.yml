@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: clientdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+  pgadmin: 
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com  # E-mail para login (utilizar variaveis de ambiente para melhores práticas)
+      PGADMIN_DEFAULT_PASSWORD: admin  # Senha para login (utilizar variaveis de ambiente para melhores práticas)
+    ports:
+      - "5050:80"  # Acesse em http://localhost:5050
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin  # Persistir dados do pgAdmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:  # Novo volume para pgAdmin
